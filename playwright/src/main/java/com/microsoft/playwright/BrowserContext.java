@@ -30,8 +30,9 @@ import java.util.regex.Pattern;
  * <p> If a page opens another page, e.g. with a {@code window.open} call, the popup will belong to the parent page's browser
  * context.
  *
- * <p> Playwright allows creating "incognito" browser contexts with {@link com.microsoft.playwright.Browser#newContext
- * Browser.newContext()} method. "Incognito" browser contexts don't write any browsing data to disk.
+ * <p> Playwright allows creating isolated non-persistent browser contexts with {@link
+ * com.microsoft.playwright.Browser#newContext Browser.newContext()} method. Non-persistent browser contexts don't write
+ * any browsing data to disk.
  * <pre>{@code
  * // Create a new incognito browser context
  * BrowserContext context = browser.newContext();
@@ -700,7 +701,7 @@ public interface BrowserContext extends AutoCloseable {
    * public class Example {
    *   public static void main(String[] args) {
    *     try (Playwright playwright = Playwright.create()) {
-   *       BrowserType webkit = playwright.webkit()
+   *       BrowserType webkit = playwright.webkit();
    *       Browser browser = webkit.launch(new BrowserType.LaunchOptions().setHeadless(false));
    *       BrowserContext context = browser.newContext();
    *       context.exposeBinding("pageURL", (source, args) -> source.page().url());
@@ -747,7 +748,7 @@ public interface BrowserContext extends AutoCloseable {
    * public class Example {
    *   public static void main(String[] args) {
    *     try (Playwright playwright = Playwright.create()) {
-   *       BrowserType webkit = playwright.webkit()
+   *       BrowserType webkit = playwright.webkit();
    *       Browser browser = webkit.launch(new BrowserType.LaunchOptions().setHeadless(false));
    *       BrowserContext context = browser.newContext();
    *       context.exposeBinding("pageURL", (source, args) -> source.page().url());
@@ -796,8 +797,9 @@ public interface BrowserContext extends AutoCloseable {
    * public class Example {
    *   public static void main(String[] args) {
    *     try (Playwright playwright = Playwright.create()) {
-   *       BrowserType webkit = playwright.webkit()
+   *       BrowserType webkit = playwright.webkit();
    *       Browser browser = webkit.launch(new BrowserType.LaunchOptions().setHeadless(false));
+   *       BrowserContext context = browser.newContext();
    *       context.exposeFunction("sha256", args -> {
    *         String text = (String) args[0];
    *         MessageDigest crypto;
@@ -832,10 +834,14 @@ public interface BrowserContext extends AutoCloseable {
    * Grants specified permissions to the browser context. Only grants corresponding permissions to the given origin if
    * specified.
    *
-   * @param permissions A permission or an array of permissions to grant. Permissions can be one of the following values:
+   * @param permissions A list of permissions to grant.
+   *
+   * <p> <strong>NOTE:</strong> Supported permissions differ between browsers, and even between different versions of the same browser. Any permission
+   * may stop working after an update.
+   *
+   * <p> Here are some permissions that may be supported by some browsers:
    * <ul>
    * <li> {@code "accelerometer"}</li>
-   * <li> {@code "accessibility-events"}</li>
    * <li> {@code "ambient-light-sensor"}</li>
    * <li> {@code "background-sync"}</li>
    * <li> {@code "camera"}</li>
@@ -860,10 +866,14 @@ public interface BrowserContext extends AutoCloseable {
    * Grants specified permissions to the browser context. Only grants corresponding permissions to the given origin if
    * specified.
    *
-   * @param permissions A permission or an array of permissions to grant. Permissions can be one of the following values:
+   * @param permissions A list of permissions to grant.
+   *
+   * <p> <strong>NOTE:</strong> Supported permissions differ between browsers, and even between different versions of the same browser. Any permission
+   * may stop working after an update.
+   *
+   * <p> Here are some permissions that may be supported by some browsers:
    * <ul>
    * <li> {@code "accelerometer"}</li>
-   * <li> {@code "accessibility-events"}</li>
    * <li> {@code "ambient-light-sensor"}</li>
    * <li> {@code "background-sync"}</li>
    * <li> {@code "camera"}</li>
@@ -926,7 +936,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} will not intercept requests intercepted by
    * Service Worker. See <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling
-   * Service Workers when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * Service Workers when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>Usage</strong>
    *
@@ -982,7 +992,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} will not intercept requests intercepted by
    * Service Worker. See <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling
-   * Service Workers when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * Service Workers when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>Usage</strong>
    *
@@ -1036,7 +1046,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} will not intercept requests intercepted by
    * Service Worker. See <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling
-   * Service Workers when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * Service Workers when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>Usage</strong>
    *
@@ -1092,7 +1102,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} will not intercept requests intercepted by
    * Service Worker. See <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling
-   * Service Workers when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * Service Workers when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>Usage</strong>
    *
@@ -1146,7 +1156,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} will not intercept requests intercepted by
    * Service Worker. See <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling
-   * Service Workers when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * Service Workers when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>Usage</strong>
    *
@@ -1202,7 +1212,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} will not intercept requests intercepted by
    * Service Worker. See <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling
-   * Service Workers when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * Service Workers when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>Usage</strong>
    *
@@ -1256,7 +1266,7 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> Playwright will not serve requests intercepted by Service Worker from the HAR file. See <a
    * href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers when
-   * using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * @param har Path to a <a href="http://www.softwareishard.com/blog/har-12-spec">HAR</a> file with prerecorded network data. If {@code
    * path} is a relative path, then it is resolved relative to the current working directory.
@@ -1271,13 +1281,94 @@ public interface BrowserContext extends AutoCloseable {
    *
    * <p> Playwright will not serve requests intercepted by Service Worker from the HAR file. See <a
    * href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers when
-   * using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * @param har Path to a <a href="http://www.softwareishard.com/blog/har-12-spec">HAR</a> file with prerecorded network data. If {@code
    * path} is a relative path, then it is resolved relative to the current working directory.
    * @since v1.23
    */
   void routeFromHAR(Path har, RouteFromHAROptions options);
+  /**
+   * This method allows to modify websocket connections that are made by any page in the browser context.
+   *
+   * <p> Note that only {@code WebSocket}s created after this method was called will be routed. It is recommended to call this
+   * method before creating any pages.
+   *
+   * <p> <strong>Usage</strong>
+   *
+   * <p> Below is an example of a simple handler that blocks some websocket messages. See {@code WebSocketRoute} for more details
+   * and examples.
+   * <pre>{@code
+   * context.routeWebSocket("/ws", ws -> {
+   *   ws.routeSend(message -> {
+   *     if ("to-be-blocked".equals(message))
+   *       return;
+   *     ws.send(message);
+   *   });
+   *   ws.connect();
+   * });
+   * }</pre>
+   *
+   * @param url Only WebSockets with the url matching this pattern will be routed. A string pattern can be relative to the {@code
+   * baseURL} context option.
+   * @param handler Handler function to route the WebSocket.
+   * @since v1.48
+   */
+  void routeWebSocket(String url, Consumer<WebSocketRoute> handler);
+  /**
+   * This method allows to modify websocket connections that are made by any page in the browser context.
+   *
+   * <p> Note that only {@code WebSocket}s created after this method was called will be routed. It is recommended to call this
+   * method before creating any pages.
+   *
+   * <p> <strong>Usage</strong>
+   *
+   * <p> Below is an example of a simple handler that blocks some websocket messages. See {@code WebSocketRoute} for more details
+   * and examples.
+   * <pre>{@code
+   * context.routeWebSocket("/ws", ws -> {
+   *   ws.routeSend(message -> {
+   *     if ("to-be-blocked".equals(message))
+   *       return;
+   *     ws.send(message);
+   *   });
+   *   ws.connect();
+   * });
+   * }</pre>
+   *
+   * @param url Only WebSockets with the url matching this pattern will be routed. A string pattern can be relative to the {@code
+   * baseURL} context option.
+   * @param handler Handler function to route the WebSocket.
+   * @since v1.48
+   */
+  void routeWebSocket(Pattern url, Consumer<WebSocketRoute> handler);
+  /**
+   * This method allows to modify websocket connections that are made by any page in the browser context.
+   *
+   * <p> Note that only {@code WebSocket}s created after this method was called will be routed. It is recommended to call this
+   * method before creating any pages.
+   *
+   * <p> <strong>Usage</strong>
+   *
+   * <p> Below is an example of a simple handler that blocks some websocket messages. See {@code WebSocketRoute} for more details
+   * and examples.
+   * <pre>{@code
+   * context.routeWebSocket("/ws", ws -> {
+   *   ws.routeSend(message -> {
+   *     if ("to-be-blocked".equals(message))
+   *       return;
+   *     ws.send(message);
+   *   });
+   *   ws.connect();
+   * });
+   * }</pre>
+   *
+   * @param url Only WebSockets with the url matching this pattern will be routed. A string pattern can be relative to the {@code
+   * baseURL} context option.
+   * @param handler Handler function to route the WebSocket.
+   * @since v1.48
+   */
+  void routeWebSocket(Predicate<String> url, Consumer<WebSocketRoute> handler);
   /**
    * This setting will change the default maximum navigation time for the following methods and related shortcuts:
    * <ul>
@@ -1305,7 +1396,7 @@ public interface BrowserContext extends AutoCloseable {
    * com.microsoft.playwright.BrowserContext#setDefaultNavigationTimeout BrowserContext.setDefaultNavigationTimeout()} take
    * priority over {@link com.microsoft.playwright.BrowserContext#setDefaultTimeout BrowserContext.setDefaultTimeout()}.
    *
-   * @param timeout Maximum time in milliseconds
+   * @param timeout Maximum time in milliseconds. Pass {@code 0} to disable timeout.
    * @since v1.8
    */
   void setDefaultTimeout(double timeout);

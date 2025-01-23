@@ -174,6 +174,19 @@ public interface Clock {
    * page.clock().pauseAt("2020-02-02");
    * }</pre>
    *
+   * <p> For best results, install the clock before navigating the page and set it to a time slightly before the intended test
+   * time. This ensures that all timers run normally during page loading, preventing the page from getting stuck. Once the
+   * page has fully loaded, you can safely use {@link com.microsoft.playwright.Clock#pauseAt Clock.pauseAt()} to pause the
+   * clock.
+   * <pre>{@code
+   * // Initialize clock with some time before the test time and let the page load
+   * // naturally. `Date.now` will progress as the timers fire.
+   * SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd'T'HH:mm:ss");
+   * page.clock().install(new Clock.InstallOptions().setTime(format.parse("2024-12-10T08:00:00")));
+   * page.navigate("http://localhost:3333");
+   * page.clock().pauseAt(format.parse("2024-12-10T10:00:00"));
+   * }</pre>
+   *
    * @param time Time to pause at.
    * @since v1.45
    */
@@ -192,6 +205,19 @@ public interface Clock {
    * SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");
    * page.clock().pauseAt(format.parse("2020-02-02"));
    * page.clock().pauseAt("2020-02-02");
+   * }</pre>
+   *
+   * <p> For best results, install the clock before navigating the page and set it to a time slightly before the intended test
+   * time. This ensures that all timers run normally during page loading, preventing the page from getting stuck. Once the
+   * page has fully loaded, you can safely use {@link com.microsoft.playwright.Clock#pauseAt Clock.pauseAt()} to pause the
+   * clock.
+   * <pre>{@code
+   * // Initialize clock with some time before the test time and let the page load
+   * // naturally. `Date.now` will progress as the timers fire.
+   * SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd'T'HH:mm:ss");
+   * page.clock().install(new Clock.InstallOptions().setTime(format.parse("2024-12-10T08:00:00")));
+   * page.navigate("http://localhost:3333");
+   * page.clock().pauseAt(format.parse("2024-12-10T10:00:00"));
    * }</pre>
    *
    * @param time Time to pause at.
@@ -214,6 +240,19 @@ public interface Clock {
    * page.clock().pauseAt("2020-02-02");
    * }</pre>
    *
+   * <p> For best results, install the clock before navigating the page and set it to a time slightly before the intended test
+   * time. This ensures that all timers run normally during page loading, preventing the page from getting stuck. Once the
+   * page has fully loaded, you can safely use {@link com.microsoft.playwright.Clock#pauseAt Clock.pauseAt()} to pause the
+   * clock.
+   * <pre>{@code
+   * // Initialize clock with some time before the test time and let the page load
+   * // naturally. `Date.now` will progress as the timers fire.
+   * SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd'T'HH:mm:ss");
+   * page.clock().install(new Clock.InstallOptions().setTime(format.parse("2024-12-10T08:00:00")));
+   * page.navigate("http://localhost:3333");
+   * page.clock().pauseAt(format.parse("2024-12-10T10:00:00"));
+   * }</pre>
+   *
    * @param time Time to pause at.
    * @since v1.45
    */
@@ -226,6 +265,10 @@ public interface Clock {
   void resume();
   /**
    * Makes {@code Date.now} and {@code new Date()} return fixed fake time at all times, keeps all the timers running.
+   *
+   * <p> Use this method for simple scenarios where you only need to test with a predefined time. For more advanced scenarios,
+   * use {@link com.microsoft.playwright.Clock#install Clock.install()} instead. Read docs on <a
+   * href="https://playwright.dev/java/docs/clock">clock emulation</a> to learn more.
    *
    * <p> <strong>Usage</strong>
    * <pre>{@code
@@ -241,6 +284,10 @@ public interface Clock {
   /**
    * Makes {@code Date.now} and {@code new Date()} return fixed fake time at all times, keeps all the timers running.
    *
+   * <p> Use this method for simple scenarios where you only need to test with a predefined time. For more advanced scenarios,
+   * use {@link com.microsoft.playwright.Clock#install Clock.install()} instead. Read docs on <a
+   * href="https://playwright.dev/java/docs/clock">clock emulation</a> to learn more.
+   *
    * <p> <strong>Usage</strong>
    * <pre>{@code
    * page.clock().setFixedTime(new Date());
@@ -255,6 +302,10 @@ public interface Clock {
   /**
    * Makes {@code Date.now} and {@code new Date()} return fixed fake time at all times, keeps all the timers running.
    *
+   * <p> Use this method for simple scenarios where you only need to test with a predefined time. For more advanced scenarios,
+   * use {@link com.microsoft.playwright.Clock#install Clock.install()} instead. Read docs on <a
+   * href="https://playwright.dev/java/docs/clock">clock emulation</a> to learn more.
+   *
    * <p> <strong>Usage</strong>
    * <pre>{@code
    * page.clock().setFixedTime(new Date());
@@ -267,7 +318,8 @@ public interface Clock {
    */
   void setFixedTime(Date time);
   /**
-   * Sets current system time but does not trigger any timers.
+   * Sets system time, but does not trigger any timers. Use this to test how the web page reacts to a time shift, for example
+   * switching from summer to winter time, or changing time zones.
    *
    * <p> <strong>Usage</strong>
    * <pre>{@code
@@ -281,7 +333,8 @@ public interface Clock {
    */
   void setSystemTime(long time);
   /**
-   * Sets current system time but does not trigger any timers.
+   * Sets system time, but does not trigger any timers. Use this to test how the web page reacts to a time shift, for example
+   * switching from summer to winter time, or changing time zones.
    *
    * <p> <strong>Usage</strong>
    * <pre>{@code
@@ -295,7 +348,8 @@ public interface Clock {
    */
   void setSystemTime(String time);
   /**
-   * Sets current system time but does not trigger any timers.
+   * Sets system time, but does not trigger any timers. Use this to test how the web page reacts to a time shift, for example
+   * switching from summer to winter time, or changing time zones.
    *
    * <p> <strong>Usage</strong>
    * <pre>{@code
