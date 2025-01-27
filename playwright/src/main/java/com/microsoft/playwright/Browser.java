@@ -29,15 +29,15 @@ import java.util.regex.Pattern;
  * import com.microsoft.playwright.*;
  *
  * public class Example {
- *   public static void main(String[] args) {
- *     try (Playwright playwright = Playwright.create()) {
- *       BrowserType firefox = playwright.firefox()
- *       Browser browser = firefox.launch();
- *       Page page = browser.newPage();
- *       page.navigate('https://example.com');
- *       browser.close();
- *     }
- *   }
+ *  public static void main(String[] args) {
+ *    try (Playwright playwright = Playwright.create()) {
+ *      BrowserType firefox = playwright.firefox();
+ *      Browser browser = firefox.launch();
+ *      Page page = browser.newPage();
+ *      page.navigate("https://example.com");
+ *      browser.close();
+ *    }
+ *  }
  * }
  * }</pre>
  */
@@ -101,21 +101,21 @@ public interface Browser extends AutoCloseable {
      *
      * <p> <strong>Details</strong>
      *
-     * <p> An array of client certificates to be used. Each certificate object must have both {@code certPath} and {@code keyPath}
-     * or a single {@code pfxPath} to load the client certificate. Optionally, {@code passphrase} property should be provided
-     * if the certficiate is encrypted. The {@code origin} property should be provided with an exact match to the request
-     * origin that the certificate is valid for.
-     *
-     * <p> <strong>NOTE:</strong> Using Client Certificates in combination with Proxy Servers is not supported.
+     * <p> An array of client certificates to be used. Each certificate object must have either both {@code certPath} and {@code
+     * keyPath}, a single {@code pfxPath}, or their corresponding direct value equivalents ({@code cert} and {@code key}, or
+     * {@code pfx}). Optionally, {@code passphrase} property should be provided if the certificate is encrypted. The {@code
+     * origin} property should be provided with an exact match to the request origin that the certificate is valid for.
      *
      * <p> <strong>NOTE:</strong> When using WebKit on macOS, accessing {@code localhost} will not pick up client certificates. You can make it work by
      * replacing {@code localhost} with {@code local.playwright}.
      */
     public List<ClientCertificate> clientCertificates;
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. See {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} for more details. Passing
-     * {@code null} resets emulation to system defaults. Defaults to {@code "light"}.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. See {@link com.microsoft.playwright.Page#emulateMedia
+     * Page.emulateMedia()} for more details. Passing {@code null} resets emulation to system defaults. Defaults to {@code
+     * "light"}.
      */
     public Optional<ColorScheme> colorScheme;
     /**
@@ -179,10 +179,6 @@ public interface Browser extends AutoCloseable {
     public List<String> permissions;
     /**
      * Network proxy settings to use with this context. Defaults to none.
-     *
-     * <p> <strong>NOTE:</strong> For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts
-     * override the proxy, global proxy will be never used and can be any string, for example {@code launch({ proxy: { server:
-     * 'http://per-context' } })}.
      */
     public Proxy proxy;
     /**
@@ -316,12 +312,10 @@ public interface Browser extends AutoCloseable {
      *
      * <p> <strong>Details</strong>
      *
-     * <p> An array of client certificates to be used. Each certificate object must have both {@code certPath} and {@code keyPath}
-     * or a single {@code pfxPath} to load the client certificate. Optionally, {@code passphrase} property should be provided
-     * if the certficiate is encrypted. The {@code origin} property should be provided with an exact match to the request
-     * origin that the certificate is valid for.
-     *
-     * <p> <strong>NOTE:</strong> Using Client Certificates in combination with Proxy Servers is not supported.
+     * <p> An array of client certificates to be used. Each certificate object must have either both {@code certPath} and {@code
+     * keyPath}, a single {@code pfxPath}, or their corresponding direct value equivalents ({@code cert} and {@code key}, or
+     * {@code pfx}). Optionally, {@code passphrase} property should be provided if the certificate is encrypted. The {@code
+     * origin} property should be provided with an exact match to the request origin that the certificate is valid for.
      *
      * <p> <strong>NOTE:</strong> When using WebKit on macOS, accessing {@code localhost} will not pick up client certificates. You can make it work by
      * replacing {@code localhost} with {@code local.playwright}.
@@ -331,9 +325,11 @@ public interface Browser extends AutoCloseable {
       return this;
     }
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. See {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} for more details. Passing
-     * {@code null} resets emulation to system defaults. Defaults to {@code "light"}.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. See {@link com.microsoft.playwright.Page#emulateMedia
+     * Page.emulateMedia()} for more details. Passing {@code null} resets emulation to system defaults. Defaults to {@code
+     * "light"}.
      */
     public NewContextOptions setColorScheme(ColorScheme colorScheme) {
       this.colorScheme = Optional.ofNullable(colorScheme);
@@ -446,20 +442,12 @@ public interface Browser extends AutoCloseable {
     }
     /**
      * Network proxy settings to use with this context. Defaults to none.
-     *
-     * <p> <strong>NOTE:</strong> For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts
-     * override the proxy, global proxy will be never used and can be any string, for example {@code launch({ proxy: { server:
-     * 'http://per-context' } })}.
      */
     public NewContextOptions setProxy(String server) {
       return setProxy(new Proxy(server));
     }
     /**
      * Network proxy settings to use with this context. Defaults to none.
-     *
-     * <p> <strong>NOTE:</strong> For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts
-     * override the proxy, global proxy will be never used and can be any string, for example {@code launch({ proxy: { server:
-     * 'http://per-context' } })}.
      */
     public NewContextOptions setProxy(Proxy proxy) {
       this.proxy = proxy;
@@ -666,21 +654,21 @@ public interface Browser extends AutoCloseable {
      *
      * <p> <strong>Details</strong>
      *
-     * <p> An array of client certificates to be used. Each certificate object must have both {@code certPath} and {@code keyPath}
-     * or a single {@code pfxPath} to load the client certificate. Optionally, {@code passphrase} property should be provided
-     * if the certficiate is encrypted. The {@code origin} property should be provided with an exact match to the request
-     * origin that the certificate is valid for.
-     *
-     * <p> <strong>NOTE:</strong> Using Client Certificates in combination with Proxy Servers is not supported.
+     * <p> An array of client certificates to be used. Each certificate object must have either both {@code certPath} and {@code
+     * keyPath}, a single {@code pfxPath}, or their corresponding direct value equivalents ({@code cert} and {@code key}, or
+     * {@code pfx}). Optionally, {@code passphrase} property should be provided if the certificate is encrypted. The {@code
+     * origin} property should be provided with an exact match to the request origin that the certificate is valid for.
      *
      * <p> <strong>NOTE:</strong> When using WebKit on macOS, accessing {@code localhost} will not pick up client certificates. You can make it work by
      * replacing {@code localhost} with {@code local.playwright}.
      */
     public List<ClientCertificate> clientCertificates;
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. See {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} for more details. Passing
-     * {@code null} resets emulation to system defaults. Defaults to {@code "light"}.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. See {@link com.microsoft.playwright.Page#emulateMedia
+     * Page.emulateMedia()} for more details. Passing {@code null} resets emulation to system defaults. Defaults to {@code
+     * "light"}.
      */
     public Optional<ColorScheme> colorScheme;
     /**
@@ -744,10 +732,6 @@ public interface Browser extends AutoCloseable {
     public List<String> permissions;
     /**
      * Network proxy settings to use with this context. Defaults to none.
-     *
-     * <p> <strong>NOTE:</strong> For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts
-     * override the proxy, global proxy will be never used and can be any string, for example {@code launch({ proxy: { server:
-     * 'http://per-context' } })}.
      */
     public Proxy proxy;
     /**
@@ -881,12 +865,10 @@ public interface Browser extends AutoCloseable {
      *
      * <p> <strong>Details</strong>
      *
-     * <p> An array of client certificates to be used. Each certificate object must have both {@code certPath} and {@code keyPath}
-     * or a single {@code pfxPath} to load the client certificate. Optionally, {@code passphrase} property should be provided
-     * if the certficiate is encrypted. The {@code origin} property should be provided with an exact match to the request
-     * origin that the certificate is valid for.
-     *
-     * <p> <strong>NOTE:</strong> Using Client Certificates in combination with Proxy Servers is not supported.
+     * <p> An array of client certificates to be used. Each certificate object must have either both {@code certPath} and {@code
+     * keyPath}, a single {@code pfxPath}, or their corresponding direct value equivalents ({@code cert} and {@code key}, or
+     * {@code pfx}). Optionally, {@code passphrase} property should be provided if the certificate is encrypted. The {@code
+     * origin} property should be provided with an exact match to the request origin that the certificate is valid for.
      *
      * <p> <strong>NOTE:</strong> When using WebKit on macOS, accessing {@code localhost} will not pick up client certificates. You can make it work by
      * replacing {@code localhost} with {@code local.playwright}.
@@ -896,9 +878,11 @@ public interface Browser extends AutoCloseable {
       return this;
     }
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. See {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} for more details. Passing
-     * {@code null} resets emulation to system defaults. Defaults to {@code "light"}.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. See {@link com.microsoft.playwright.Page#emulateMedia
+     * Page.emulateMedia()} for more details. Passing {@code null} resets emulation to system defaults. Defaults to {@code
+     * "light"}.
      */
     public NewPageOptions setColorScheme(ColorScheme colorScheme) {
       this.colorScheme = Optional.ofNullable(colorScheme);
@@ -1011,20 +995,12 @@ public interface Browser extends AutoCloseable {
     }
     /**
      * Network proxy settings to use with this context. Defaults to none.
-     *
-     * <p> <strong>NOTE:</strong> For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts
-     * override the proxy, global proxy will be never used and can be any string, for example {@code launch({ proxy: { server:
-     * 'http://per-context' } })}.
      */
     public NewPageOptions setProxy(String server) {
       return setProxy(new Proxy(server));
     }
     /**
      * Network proxy settings to use with this context. Defaults to none.
-     *
-     * <p> <strong>NOTE:</strong> For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts
-     * override the proxy, global proxy will be never used and can be any string, for example {@code launch({ proxy: { server:
-     * 'http://per-context' } })}.
      */
     public NewPageOptions setProxy(Proxy proxy) {
       this.proxy = proxy;
@@ -1249,10 +1225,10 @@ public interface Browser extends AutoCloseable {
    * <p> In case this browser is connected to, clears all created contexts belonging to this browser and disconnects from the
    * browser server.
    *
-   * <p> <strong>NOTE:</strong> This is similar to force quitting the browser. Therefore, you should call {@link
-   * com.microsoft.playwright.BrowserContext#close BrowserContext.close()} on any {@code BrowserContext}'s you explicitly
-   * created earlier with {@link com.microsoft.playwright.Browser#newContext Browser.newContext()} **before** calling {@link
-   * com.microsoft.playwright.Browser#close Browser.close()}.
+   * <p> <strong>NOTE:</strong> This is similar to force-quitting the browser. To close pages gracefully and ensure you receive page close events, call
+   * {@link com.microsoft.playwright.BrowserContext#close BrowserContext.close()} on any {@code BrowserContext} instances you
+   * explicitly created earlier using {@link com.microsoft.playwright.Browser#newContext Browser.newContext()} **before**
+   * calling {@link com.microsoft.playwright.Browser#close Browser.close()}.
    *
    * <p> The {@code Browser} object itself is considered to be disposed and cannot be used anymore.
    *
@@ -1268,10 +1244,10 @@ public interface Browser extends AutoCloseable {
    * <p> In case this browser is connected to, clears all created contexts belonging to this browser and disconnects from the
    * browser server.
    *
-   * <p> <strong>NOTE:</strong> This is similar to force quitting the browser. Therefore, you should call {@link
-   * com.microsoft.playwright.BrowserContext#close BrowserContext.close()} on any {@code BrowserContext}'s you explicitly
-   * created earlier with {@link com.microsoft.playwright.Browser#newContext Browser.newContext()} **before** calling {@link
-   * com.microsoft.playwright.Browser#close Browser.close()}.
+   * <p> <strong>NOTE:</strong> This is similar to force-quitting the browser. To close pages gracefully and ensure you receive page close events, call
+   * {@link com.microsoft.playwright.BrowserContext#close BrowserContext.close()} on any {@code BrowserContext} instances you
+   * explicitly created earlier using {@link com.microsoft.playwright.Browser#newContext Browser.newContext()} **before**
+   * calling {@link com.microsoft.playwright.Browser#close Browser.close()}.
    *
    * <p> The {@code Browser} object itself is considered to be disposed and cannot be used anymore.
    *
@@ -1321,7 +1297,7 @@ public interface Browser extends AutoCloseable {
    * BrowserContext context = browser.newContext();
    * // Create a new page in a pristine context.
    * Page page = context.newPage();
-   * page.navigate('https://example.com');
+   * page.navigate("https://example.com");
    *
    * // Graceful close up everything
    * context.close();
@@ -1348,7 +1324,7 @@ public interface Browser extends AutoCloseable {
    * BrowserContext context = browser.newContext();
    * // Create a new page in a pristine context.
    * Page page = context.newPage();
-   * page.navigate('https://example.com');
+   * page.navigate("https://example.com");
    *
    * // Graceful close up everything
    * context.close();
@@ -1396,7 +1372,7 @@ public interface Browser extends AutoCloseable {
    * <pre>{@code
    * browser.startTracing(page, new Browser.StartTracingOptions()
    *   .setPath(Paths.get("trace.json")));
-   * page.goto('https://www.google.com');
+   * page.navigate("https://www.google.com");
    * browser.stopTracing();
    * }</pre>
    *
@@ -1420,7 +1396,7 @@ public interface Browser extends AutoCloseable {
    * <pre>{@code
    * browser.startTracing(page, new Browser.StartTracingOptions()
    *   .setPath(Paths.get("trace.json")));
-   * page.goto('https://www.google.com');
+   * page.navigate("https://www.google.com");
    * browser.stopTracing();
    * }</pre>
    *
@@ -1443,7 +1419,7 @@ public interface Browser extends AutoCloseable {
    * <pre>{@code
    * browser.startTracing(page, new Browser.StartTracingOptions()
    *   .setPath(Paths.get("trace.json")));
-   * page.goto('https://www.google.com');
+   * page.navigate("https://www.google.com");
    * browser.stopTracing();
    * }</pre>
    *

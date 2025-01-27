@@ -172,9 +172,14 @@ public interface BrowserType {
      */
     public List<String> args;
     /**
-     * Browser distribution channel.  Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge",
-     * "msedge-beta", "msedge-dev", "msedge-canary". Read more about using <a
-     * href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and Microsoft Edge</a>.
+     * Browser distribution channel.
+     *
+     * <p> Use "chromium" to <a href="https://playwright.dev/java/docs/browsers#chromium-new-headless-mode">opt in to new headless
+     * mode</a>.
+     *
+     * <p> Use "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", or "msedge-canary" to
+     * use branded <a href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and
+     * Microsoft Edge</a>.
      */
     public Object channel;
     /**
@@ -265,18 +270,28 @@ public interface BrowserType {
     }
     @Deprecated
     /**
-     * Browser distribution channel.  Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge",
-     * "msedge-beta", "msedge-dev", "msedge-canary". Read more about using <a
-     * href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and Microsoft Edge</a>.
+     * Browser distribution channel.
+     *
+     * <p> Use "chromium" to <a href="https://playwright.dev/java/docs/browsers#chromium-new-headless-mode">opt in to new headless
+     * mode</a>.
+     *
+     * <p> Use "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", or "msedge-canary" to
+     * use branded <a href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and
+     * Microsoft Edge</a>.
      */
     public LaunchOptions setChannel(BrowserChannel channel) {
       this.channel = channel;
       return this;
     }
     /**
-     * Browser distribution channel.  Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge",
-     * "msedge-beta", "msedge-dev", "msedge-canary". Read more about using <a
-     * href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and Microsoft Edge</a>.
+     * Browser distribution channel.
+     *
+     * <p> Use "chromium" to <a href="https://playwright.dev/java/docs/browsers#chromium-new-headless-mode">opt in to new headless
+     * mode</a>.
+     *
+     * <p> Use "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", or "msedge-canary" to
+     * use branded <a href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and
+     * Microsoft Edge</a>.
      */
     public LaunchOptions setChannel(String channel) {
       this.channel = channel;
@@ -446,9 +461,14 @@ public interface BrowserType {
      */
     public Boolean bypassCSP;
     /**
-     * Browser distribution channel.  Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge",
-     * "msedge-beta", "msedge-dev", "msedge-canary". Read more about using <a
-     * href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and Microsoft Edge</a>.
+     * Browser distribution channel.
+     *
+     * <p> Use "chromium" to <a href="https://playwright.dev/java/docs/browsers#chromium-new-headless-mode">opt in to new headless
+     * mode</a>.
+     *
+     * <p> Use "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", or "msedge-canary" to
+     * use branded <a href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and
+     * Microsoft Edge</a>.
      */
     public Object channel;
     /**
@@ -460,21 +480,21 @@ public interface BrowserType {
      *
      * <p> <strong>Details</strong>
      *
-     * <p> An array of client certificates to be used. Each certificate object must have both {@code certPath} and {@code keyPath}
-     * or a single {@code pfxPath} to load the client certificate. Optionally, {@code passphrase} property should be provided
-     * if the certficiate is encrypted. The {@code origin} property should be provided with an exact match to the request
-     * origin that the certificate is valid for.
-     *
-     * <p> <strong>NOTE:</strong> Using Client Certificates in combination with Proxy Servers is not supported.
+     * <p> An array of client certificates to be used. Each certificate object must have either both {@code certPath} and {@code
+     * keyPath}, a single {@code pfxPath}, or their corresponding direct value equivalents ({@code cert} and {@code key}, or
+     * {@code pfx}). Optionally, {@code passphrase} property should be provided if the certificate is encrypted. The {@code
+     * origin} property should be provided with an exact match to the request origin that the certificate is valid for.
      *
      * <p> <strong>NOTE:</strong> When using WebKit on macOS, accessing {@code localhost} will not pick up client certificates. You can make it work by
      * replacing {@code localhost} with {@code local.playwright}.
      */
     public List<ClientCertificate> clientCertificates;
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. See {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} for more details. Passing
-     * {@code null} resets emulation to system defaults. Defaults to {@code "light"}.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. See {@link com.microsoft.playwright.Page#emulateMedia
+     * Page.emulateMedia()} for more details. Passing {@code null} resets emulation to system defaults. Defaults to {@code
+     * "light"}.
      */
     public Optional<ColorScheme> colorScheme;
     /**
@@ -734,18 +754,28 @@ public interface BrowserType {
     }
     @Deprecated
     /**
-     * Browser distribution channel.  Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge",
-     * "msedge-beta", "msedge-dev", "msedge-canary". Read more about using <a
-     * href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and Microsoft Edge</a>.
+     * Browser distribution channel.
+     *
+     * <p> Use "chromium" to <a href="https://playwright.dev/java/docs/browsers#chromium-new-headless-mode">opt in to new headless
+     * mode</a>.
+     *
+     * <p> Use "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", or "msedge-canary" to
+     * use branded <a href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and
+     * Microsoft Edge</a>.
      */
     public LaunchPersistentContextOptions setChannel(BrowserChannel channel) {
       this.channel = channel;
       return this;
     }
     /**
-     * Browser distribution channel.  Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge",
-     * "msedge-beta", "msedge-dev", "msedge-canary". Read more about using <a
-     * href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and Microsoft Edge</a>.
+     * Browser distribution channel.
+     *
+     * <p> Use "chromium" to <a href="https://playwright.dev/java/docs/browsers#chromium-new-headless-mode">opt in to new headless
+     * mode</a>.
+     *
+     * <p> Use "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", or "msedge-canary" to
+     * use branded <a href="https://playwright.dev/java/docs/browsers#google-chrome--microsoft-edge">Google Chrome and
+     * Microsoft Edge</a>.
      */
     public LaunchPersistentContextOptions setChannel(String channel) {
       this.channel = channel;
@@ -763,12 +793,10 @@ public interface BrowserType {
      *
      * <p> <strong>Details</strong>
      *
-     * <p> An array of client certificates to be used. Each certificate object must have both {@code certPath} and {@code keyPath}
-     * or a single {@code pfxPath} to load the client certificate. Optionally, {@code passphrase} property should be provided
-     * if the certficiate is encrypted. The {@code origin} property should be provided with an exact match to the request
-     * origin that the certificate is valid for.
-     *
-     * <p> <strong>NOTE:</strong> Using Client Certificates in combination with Proxy Servers is not supported.
+     * <p> An array of client certificates to be used. Each certificate object must have either both {@code certPath} and {@code
+     * keyPath}, a single {@code pfxPath}, or their corresponding direct value equivalents ({@code cert} and {@code key}, or
+     * {@code pfx}). Optionally, {@code passphrase} property should be provided if the certificate is encrypted. The {@code
+     * origin} property should be provided with an exact match to the request origin that the certificate is valid for.
      *
      * <p> <strong>NOTE:</strong> When using WebKit on macOS, accessing {@code localhost} will not pick up client certificates. You can make it work by
      * replacing {@code localhost} with {@code local.playwright}.
@@ -778,9 +806,11 @@ public interface BrowserType {
       return this;
     }
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. See {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} for more details. Passing
-     * {@code null} resets emulation to system defaults. Defaults to {@code "light"}.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. See {@link com.microsoft.playwright.Page#emulateMedia
+     * Page.emulateMedia()} for more details. Passing {@code null} resets emulation to system defaults. Defaults to {@code
+     * "light"}.
      */
     public LaunchPersistentContextOptions setColorScheme(ColorScheme colorScheme) {
       this.colorScheme = Optional.ofNullable(colorScheme);

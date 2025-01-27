@@ -560,7 +560,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -645,7 +646,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public ClickOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -723,7 +725,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -801,7 +804,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public DblclickOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -955,8 +959,10 @@ public interface Page extends AutoCloseable {
   }
   class EmulateMediaOptions {
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. Passing {@code null} disables color scheme emulation.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. Passing {@code null} disables color scheme emulation.
+     * {@code "no-preference"} is deprecated.
      */
     public Optional<ColorScheme> colorScheme;
     /**
@@ -976,8 +982,10 @@ public interface Page extends AutoCloseable {
     public Optional<ReducedMotion> reducedMotion;
 
     /**
-     * Emulates {@code "prefers-colors-scheme"} media feature, supported values are {@code "light"}, {@code "dark"}, {@code
-     * "no-preference"}. Passing {@code null} disables color scheme emulation.
+     * Emulates <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-colors-scheme</a> media
+     * feature, supported values are {@code "light"} and {@code "dark"}. Passing {@code null} disables color scheme emulation.
+     * {@code "no-preference"} is deprecated.
      */
     public EmulateMediaOptions setColorScheme(ColorScheme colorScheme) {
       this.colorScheme = Optional.ofNullable(colorScheme);
@@ -1591,7 +1599,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -1655,7 +1664,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public HoverOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -2421,7 +2431,7 @@ public interface Page extends AutoCloseable {
     /**
      * When set to {@code minimal}, only record information necessary for routing from HAR. This omits sizes, timing, page,
      * cookies, security and other types of HAR information that are not used when replaying from HAR. Defaults to {@code
-     * full}.
+     * minimal}.
      */
     public HarMode updateMode;
     /**
@@ -2461,7 +2471,7 @@ public interface Page extends AutoCloseable {
     /**
      * When set to {@code minimal}, only record information necessary for routing from HAR. This omits sizes, timing, page,
      * cookies, security and other types of HAR information that are not used when replaying from HAR. Defaults to {@code
-     * full}.
+     * minimal}.
      */
     public RouteFromHAROptions setUpdateMode(HarMode updateMode) {
       this.updateMode = updateMode;
@@ -2691,7 +2701,7 @@ public interface Page extends AutoCloseable {
      */
     public Boolean force;
     /**
-     * @deprecated This option will default to {@code true} in the future.
+     * @deprecated This option has no effect.
      */
     public Boolean noWaitAfter;
     /**
@@ -2716,7 +2726,7 @@ public interface Page extends AutoCloseable {
       return this;
     }
     /**
-     * @deprecated This option will default to {@code true} in the future.
+     * @deprecated This option has no effect.
      */
     public SelectOptionOptions setNoWaitAfter(boolean noWaitAfter) {
       this.noWaitAfter = noWaitAfter;
@@ -2962,7 +2972,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -3026,7 +3037,8 @@ public interface Page extends AutoCloseable {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public TapOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -4143,9 +4155,9 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>Usage</strong>
    * <pre>{@code
-   * page.dragAndDrop("#source", '#target');
+   * page.dragAndDrop("#source", "#target");
    * // or specify exact positions relative to the top-left corners of the elements:
-   * page.dragAndDrop("#source", '#target', new Page.DragAndDropOptions()
+   * page.dragAndDrop("#source", "#target", new Page.DragAndDropOptions()
    *   .setSourcePosition(34, 7).setTargetPosition(10, 20));
    * }</pre>
    *
@@ -4164,9 +4176,9 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>Usage</strong>
    * <pre>{@code
-   * page.dragAndDrop("#source", '#target');
+   * page.dragAndDrop("#source", "#target");
    * // or specify exact positions relative to the top-left corners of the elements:
-   * page.dragAndDrop("#source", '#target', new Page.DragAndDropOptions()
+   * page.dragAndDrop("#source", "#target", new Page.DragAndDropOptions()
    *   .setSourcePosition(34, 7).setTargetPosition(10, 20));
    * }</pre>
    *
@@ -4206,8 +4218,6 @@ public interface Page extends AutoCloseable {
    * // → true
    * page.evaluate("() => matchMedia('(prefers-color-scheme: light)').matches");
    * // → false
-   * page.evaluate("() => matchMedia('(prefers-color-scheme: no-preference)').matches");
-   * // → false
    * }</pre>
    *
    * @since v1.8
@@ -4243,8 +4253,6 @@ public interface Page extends AutoCloseable {
    * page.evaluate("() => matchMedia('(prefers-color-scheme: dark)').matches");
    * // → true
    * page.evaluate("() => matchMedia('(prefers-color-scheme: light)').matches");
-   * // → false
-   * page.evaluate("() => matchMedia('(prefers-color-scheme: no-preference)').matches");
    * // → false
    * }</pre>
    *
@@ -4552,7 +4560,7 @@ public interface Page extends AutoCloseable {
    *   public static void main(String[] args) {
    *     try (Playwright playwright = Playwright.create()) {
    *       BrowserType webkit = playwright.webkit();
-   *       Browser browser = webkit.launch({ headless: false });
+   *       Browser browser = webkit.launch(new BrowserType.LaunchOptions().setHeadless(false));
    *       BrowserContext context = browser.newContext();
    *       Page page = context.newPage();
    *       page.exposeBinding("pageURL", (source, args) -> source.page().url());
@@ -4602,7 +4610,7 @@ public interface Page extends AutoCloseable {
    *   public static void main(String[] args) {
    *     try (Playwright playwright = Playwright.create()) {
    *       BrowserType webkit = playwright.webkit();
-   *       Browser browser = webkit.launch({ headless: false });
+   *       Browser browser = webkit.launch(new BrowserType.LaunchOptions().setHeadless(false));
    *       BrowserContext context = browser.newContext();
    *       Page page = context.newPage();
    *       page.exposeBinding("pageURL", (source, args) -> source.page().url());
@@ -4654,26 +4662,27 @@ public interface Page extends AutoCloseable {
    *   public static void main(String[] args) {
    *     try (Playwright playwright = Playwright.create()) {
    *       BrowserType webkit = playwright.webkit();
-   *       Browser browser = webkit.launch({ headless: false });
+   *       Browser browser = webkit.launch(new BrowserType.LaunchOptions().setHeadless(false));
    *       Page page = browser.newPage();
    *       page.exposeFunction("sha256", args -> {
-   *         String text = (String) args[0];
-   *         MessageDigest crypto;
    *         try {
-   *           crypto = MessageDigest.getInstance("SHA-256");
+   *           String text = (String) args[0];
+   *           MessageDigest crypto = MessageDigest.getInstance("SHA-256");
+   *           byte[] token = crypto.digest(text.getBytes(StandardCharsets.UTF_8));
+   *           return Base64.getEncoder().encodeToString(token);
    *         } catch (NoSuchAlgorithmException e) {
    *           return null;
    *         }
-   *         byte[] token = crypto.digest(text.getBytes(StandardCharsets.UTF_8));
-   *         return Base64.getEncoder().encodeToString(token);
    *       });
-   *       page.setContent("<script>\n" +
+   *       page.setContent(
+   *         "<script>\n" +
    *         "  async function onClick() {\n" +
    *         "    document.querySelector('div').textContent = await window.sha256('PLAYWRIGHT');\n" +
    *         "  }\n" +
    *         "</script>\n" +
    *         "<button onclick=\"onClick()\">Click me</button>\n" +
-   *         "<div></div>\n");
+   *         "<div></div>"
+   *       );
    *       page.click("button");
    *     }
    *   }
@@ -4749,7 +4758,7 @@ public interface Page extends AutoCloseable {
    * Frame frame = page.frame("frame-name");
    * }</pre>
    * <pre>{@code
-   * Frame frame = page.frameByUrl(Pattern.compile(".*domain.*");
+   * Frame frame = page.frameByUrl(Pattern.compile(".*domain.*"));
    * }</pre>
    *
    * @param name Frame name specified in the {@code iframe}'s {@code name} attribute.
@@ -5155,19 +5164,19 @@ public interface Page extends AutoCloseable {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -5197,19 +5206,19 @@ public interface Page extends AutoCloseable {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -5237,19 +5246,19 @@ public interface Page extends AutoCloseable {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -5279,19 +5288,19 @@ public interface Page extends AutoCloseable {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -5414,6 +5423,25 @@ public interface Page extends AutoCloseable {
    * @since v1.8
    */
   Response goForward(GoForwardOptions options);
+  /**
+   * Request the page to perform garbage collection. Note that there is no guarantee that all unreachable objects will be
+   * collected.
+   *
+   * <p> This is useful to help detect memory leaks. For example, if your page has a large object {@code "suspect"} that might be
+   * leaked, you can check that it does not leak by using a <a
+   * href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef">{@code WeakRef}</a>.
+   * <pre>{@code
+   * // 1. In your page, save a WeakRef for the "suspect".
+   * page.evaluate("globalThis.suspectWeakRef = new WeakRef(suspect)");
+   * // 2. Request garbage collection.
+   * page.requestGC();
+   * // 3. Check that weak ref does not deref to the original object.
+   * assertTrue(page.evaluate("!globalThis.suspectWeakRef.deref()"));
+   * }</pre>
+   *
+   * @since v1.48
+   */
+  void requestGC();
   /**
    * Returns the main resource response. In case of multiple redirects, the navigation will resolve with the first
    * non-redirect response.
@@ -5773,16 +5801,13 @@ public interface Page extends AutoCloseable {
    * <p> User can inspect selectors or perform manual steps while paused. Resume will continue running the original script from
    * the place it was paused.
    *
-   * <p> <strong>NOTE:</strong> This method requires Playwright to be started in a headed mode, with a falsy {@code headless} value in the {@link
-   * com.microsoft.playwright.BrowserType#launch BrowserType.launch()}.
+   * <p> <strong>NOTE:</strong> This method requires Playwright to be started in a headed mode, with a falsy {@code headless} option.
    *
    * @since v1.9
    */
   void pause();
   /**
    * Returns the PDF buffer.
-   *
-   * <p> <strong>NOTE:</strong> Generating a pdf is currently only supported in Chromium headless.
    *
    * <p> {@code page.pdf()} generates a pdf of the page with {@code print} css media. To generate a pdf with {@code screen}
    * media, call {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} before calling {@code page.pdf()}:
@@ -5841,8 +5866,6 @@ public interface Page extends AutoCloseable {
   }
   /**
    * Returns the PDF buffer.
-   *
-   * <p> <strong>NOTE:</strong> Generating a pdf is currently only supported in Chromium headless.
    *
    * <p> {@code page.pdf()} generates a pdf of the page with {@code print} css media. To generate a pdf with {@code screen}
    * media, call {@link com.microsoft.playwright.Page#emulateMedia Page.emulateMedia()} before calling {@code page.pdf()}:
@@ -6041,39 +6064,37 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> Running the handler will alter your page state mid-test. For example it will change the currently focused element and
    * move the mouse. Make sure that actions that run after the handler are self-contained and do not rely on the focus and
-   * mouse state being unchanged. <br /> <br /> For example, consider a test that calls {@link
-   * com.microsoft.playwright.Locator#focus Locator.focus()} followed by {@link com.microsoft.playwright.Keyboard#press
-   * Keyboard.press()}. If your handler clicks a button between these two actions, the focused element most likely will be
-   * wrong, and key press will happen on the unexpected element. Use {@link com.microsoft.playwright.Locator#press
-   * Locator.press()} instead to avoid this problem. <br /> <br /> Another example is a series of mouse actions, where {@link
-   * com.microsoft.playwright.Mouse#move Mouse.move()} is followed by {@link com.microsoft.playwright.Mouse#down
-   * Mouse.down()}. Again, when the handler runs between these two actions, the mouse position will be wrong during the mouse
-   * down. Prefer self-contained actions like {@link com.microsoft.playwright.Locator#click Locator.click()} that do not rely
-   * on the state being unchanged by a handler.
+   * mouse state being unchanged.For example, consider a test that calls {@link com.microsoft.playwright.Locator#focus Locator.focus()} followed by
+   * {@link com.microsoft.playwright.Keyboard#press Keyboard.press()}. If your handler clicks a button between these two
+   * actions, the focused element most likely will be wrong, and key press will happen on the unexpected element. Use {@link
+   * com.microsoft.playwright.Locator#press Locator.press()} instead to avoid this problem.Another example is a series of mouse actions, where {@link com.microsoft.playwright.Mouse#move Mouse.move()} is followed
+   * by {@link com.microsoft.playwright.Mouse#down Mouse.down()}. Again, when the handler runs between these two actions, the
+   * mouse position will be wrong during the mouse down. Prefer self-contained actions like {@link
+   * com.microsoft.playwright.Locator#click Locator.click()} that do not rely on the state being unchanged by a handler.
    *
    * <p> <strong>Usage</strong>
    *
    * <p> An example that closes a "Sign up to the newsletter" dialog when it appears:
    * <pre>{@code
    * // Setup the handler.
-   * page.addLocatorHandler(page.getByText("Sign up to the newsletter"), () => {
+   * page.addLocatorHandler(page.getByText("Sign up to the newsletter"), () -> {
    *   page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("No thanks")).click();
    * });
    *
    * // Write the test as usual.
-   * page.goto("https://example.com");
+   * page.navigate("https://example.com");
    * page.getByRole("button", Page.GetByRoleOptions().setName("Start here")).click();
    * }</pre>
    *
    * <p> An example that skips the "Confirm your security details" page when it is shown:
    * <pre>{@code
    * // Setup the handler.
-   * page.addLocatorHandler(page.getByText("Confirm your security details")), () => {
+   * page.addLocatorHandler(page.getByText("Confirm your security details"), () -> {
    *   page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Remind me later")).click();
    * });
    *
    * // Write the test as usual.
-   * page.goto("https://example.com");
+   * page.navigate("https://example.com");
    * page.getByRole("button", Page.GetByRoleOptions().setName("Start here")).click();
    * }</pre>
    *
@@ -6082,19 +6103,19 @@ public interface Page extends AutoCloseable {
    * handler does not hide the {@code <body>} element.
    * <pre>{@code
    * // Setup the handler.
-   * page.addLocatorHandler(page.locator("body")), () => {
+   * page.addLocatorHandler(page.locator("body"), () -> {
    *   page.evaluate("window.removeObstructionsForTestIfNeeded()");
-   * }, new Page.AddLocatorHandlerOptions.setNoWaitAfter(true));
+   * }, new Page.AddLocatorHandlerOptions().setNoWaitAfter(true));
    *
    * // Write the test as usual.
-   * page.goto("https://example.com");
+   * page.navigate("https://example.com");
    * page.getByRole("button", Page.GetByRoleOptions().setName("Start here")).click();
    * }</pre>
    *
    * <p> Handler takes the original locator as an argument. You can also automatically remove the handler after a number of
    * invocations by setting {@code times}:
    * <pre>{@code
-   * page.addLocatorHandler(page.getByLabel("Close"), locator => {
+   * page.addLocatorHandler(page.getByLabel("Close"), locator -> {
    *   locator.click();
    * }, new Page.AddLocatorHandlerOptions().setTimes(1));
    * }</pre>
@@ -6135,39 +6156,37 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> Running the handler will alter your page state mid-test. For example it will change the currently focused element and
    * move the mouse. Make sure that actions that run after the handler are self-contained and do not rely on the focus and
-   * mouse state being unchanged. <br /> <br /> For example, consider a test that calls {@link
-   * com.microsoft.playwright.Locator#focus Locator.focus()} followed by {@link com.microsoft.playwright.Keyboard#press
-   * Keyboard.press()}. If your handler clicks a button between these two actions, the focused element most likely will be
-   * wrong, and key press will happen on the unexpected element. Use {@link com.microsoft.playwright.Locator#press
-   * Locator.press()} instead to avoid this problem. <br /> <br /> Another example is a series of mouse actions, where {@link
-   * com.microsoft.playwright.Mouse#move Mouse.move()} is followed by {@link com.microsoft.playwright.Mouse#down
-   * Mouse.down()}. Again, when the handler runs between these two actions, the mouse position will be wrong during the mouse
-   * down. Prefer self-contained actions like {@link com.microsoft.playwright.Locator#click Locator.click()} that do not rely
-   * on the state being unchanged by a handler.
+   * mouse state being unchanged.For example, consider a test that calls {@link com.microsoft.playwright.Locator#focus Locator.focus()} followed by
+   * {@link com.microsoft.playwright.Keyboard#press Keyboard.press()}. If your handler clicks a button between these two
+   * actions, the focused element most likely will be wrong, and key press will happen on the unexpected element. Use {@link
+   * com.microsoft.playwright.Locator#press Locator.press()} instead to avoid this problem.Another example is a series of mouse actions, where {@link com.microsoft.playwright.Mouse#move Mouse.move()} is followed
+   * by {@link com.microsoft.playwright.Mouse#down Mouse.down()}. Again, when the handler runs between these two actions, the
+   * mouse position will be wrong during the mouse down. Prefer self-contained actions like {@link
+   * com.microsoft.playwright.Locator#click Locator.click()} that do not rely on the state being unchanged by a handler.
    *
    * <p> <strong>Usage</strong>
    *
    * <p> An example that closes a "Sign up to the newsletter" dialog when it appears:
    * <pre>{@code
    * // Setup the handler.
-   * page.addLocatorHandler(page.getByText("Sign up to the newsletter"), () => {
+   * page.addLocatorHandler(page.getByText("Sign up to the newsletter"), () -> {
    *   page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("No thanks")).click();
    * });
    *
    * // Write the test as usual.
-   * page.goto("https://example.com");
+   * page.navigate("https://example.com");
    * page.getByRole("button", Page.GetByRoleOptions().setName("Start here")).click();
    * }</pre>
    *
    * <p> An example that skips the "Confirm your security details" page when it is shown:
    * <pre>{@code
    * // Setup the handler.
-   * page.addLocatorHandler(page.getByText("Confirm your security details")), () => {
+   * page.addLocatorHandler(page.getByText("Confirm your security details"), () -> {
    *   page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Remind me later")).click();
    * });
    *
    * // Write the test as usual.
-   * page.goto("https://example.com");
+   * page.navigate("https://example.com");
    * page.getByRole("button", Page.GetByRoleOptions().setName("Start here")).click();
    * }</pre>
    *
@@ -6176,19 +6195,19 @@ public interface Page extends AutoCloseable {
    * handler does not hide the {@code <body>} element.
    * <pre>{@code
    * // Setup the handler.
-   * page.addLocatorHandler(page.locator("body")), () => {
+   * page.addLocatorHandler(page.locator("body"), () -> {
    *   page.evaluate("window.removeObstructionsForTestIfNeeded()");
-   * }, new Page.AddLocatorHandlerOptions.setNoWaitAfter(true));
+   * }, new Page.AddLocatorHandlerOptions().setNoWaitAfter(true));
    *
    * // Write the test as usual.
-   * page.goto("https://example.com");
+   * page.navigate("https://example.com");
    * page.getByRole("button", Page.GetByRoleOptions().setName("Start here")).click();
    * }</pre>
    *
    * <p> Handler takes the original locator as an argument. You can also automatically remove the handler after a number of
    * invocations by setting {@code times}:
    * <pre>{@code
-   * page.addLocatorHandler(page.getByLabel("Close"), locator => {
+   * page.addLocatorHandler(page.getByLabel("Close"), locator -> {
    *   locator.click();
    * }, new Page.AddLocatorHandlerOptions().setTimes(1));
    * }</pre>
@@ -6240,7 +6259,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept requests intercepted by Service Worker. See
    * <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers
-   * when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept the first request of a popup page. Use
    * {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} instead.
@@ -6299,7 +6318,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept requests intercepted by Service Worker. See
    * <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers
-   * when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept the first request of a popup page. Use
    * {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} instead.
@@ -6356,7 +6375,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept requests intercepted by Service Worker. See
    * <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers
-   * when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept the first request of a popup page. Use
    * {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} instead.
@@ -6415,7 +6434,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept requests intercepted by Service Worker. See
    * <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers
-   * when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept the first request of a popup page. Use
    * {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} instead.
@@ -6472,7 +6491,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept requests intercepted by Service Worker. See
    * <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers
-   * when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept the first request of a popup page. Use
    * {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} instead.
@@ -6531,7 +6550,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept requests intercepted by Service Worker. See
    * <a href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers
-   * when using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * when using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#route Page.route()} will not intercept the first request of a popup page. Use
    * {@link com.microsoft.playwright.BrowserContext#route BrowserContext.route()} instead.
@@ -6585,7 +6604,7 @@ public interface Page extends AutoCloseable {
    *
    * <p> Playwright will not serve requests intercepted by Service Worker from the HAR file. See <a
    * href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers when
-   * using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * @param har Path to a <a href="http://www.softwareishard.com/blog/har-12-spec">HAR</a> file with prerecorded network data. If {@code
    * path} is a relative path, then it is resolved relative to the current working directory.
@@ -6600,13 +6619,88 @@ public interface Page extends AutoCloseable {
    *
    * <p> Playwright will not serve requests intercepted by Service Worker from the HAR file. See <a
    * href="https://github.com/microsoft/playwright/issues/1090">this</a> issue. We recommend disabling Service Workers when
-   * using request interception by setting {@code Browser.newContext.serviceWorkers} to {@code "block"}.
+   * using request interception by setting {@code serviceWorkers} to {@code "block"}.
    *
    * @param har Path to a <a href="http://www.softwareishard.com/blog/har-12-spec">HAR</a> file with prerecorded network data. If {@code
    * path} is a relative path, then it is resolved relative to the current working directory.
    * @since v1.23
    */
   void routeFromHAR(Path har, RouteFromHAROptions options);
+  /**
+   * This method allows to modify websocket connections that are made by the page.
+   *
+   * <p> Note that only {@code WebSocket}s created after this method was called will be routed. It is recommended to call this
+   * method before navigating the page.
+   *
+   * <p> <strong>Usage</strong>
+   *
+   * <p> Below is an example of a simple mock that responds to a single message. See {@code WebSocketRoute} for more details and
+   * examples.
+   * <pre>{@code
+   * page.routeWebSocket("/ws", ws -> {
+   *   ws.onMessage(frame -> {
+   *     if ("request".equals(frame.text()))
+   *       ws.send("response");
+   *   });
+   * });
+   * }</pre>
+   *
+   * @param url Only WebSockets with the url matching this pattern will be routed. A string pattern can be relative to the {@code
+   * baseURL} context option.
+   * @param handler Handler function to route the WebSocket.
+   * @since v1.48
+   */
+  void routeWebSocket(String url, Consumer<WebSocketRoute> handler);
+  /**
+   * This method allows to modify websocket connections that are made by the page.
+   *
+   * <p> Note that only {@code WebSocket}s created after this method was called will be routed. It is recommended to call this
+   * method before navigating the page.
+   *
+   * <p> <strong>Usage</strong>
+   *
+   * <p> Below is an example of a simple mock that responds to a single message. See {@code WebSocketRoute} for more details and
+   * examples.
+   * <pre>{@code
+   * page.routeWebSocket("/ws", ws -> {
+   *   ws.onMessage(frame -> {
+   *     if ("request".equals(frame.text()))
+   *       ws.send("response");
+   *   });
+   * });
+   * }</pre>
+   *
+   * @param url Only WebSockets with the url matching this pattern will be routed. A string pattern can be relative to the {@code
+   * baseURL} context option.
+   * @param handler Handler function to route the WebSocket.
+   * @since v1.48
+   */
+  void routeWebSocket(Pattern url, Consumer<WebSocketRoute> handler);
+  /**
+   * This method allows to modify websocket connections that are made by the page.
+   *
+   * <p> Note that only {@code WebSocket}s created after this method was called will be routed. It is recommended to call this
+   * method before navigating the page.
+   *
+   * <p> <strong>Usage</strong>
+   *
+   * <p> Below is an example of a simple mock that responds to a single message. See {@code WebSocketRoute} for more details and
+   * examples.
+   * <pre>{@code
+   * page.routeWebSocket("/ws", ws -> {
+   *   ws.onMessage(frame -> {
+   *     if ("request".equals(frame.text()))
+   *       ws.send("response");
+   *   });
+   * });
+   * }</pre>
+   *
+   * @param url Only WebSockets with the url matching this pattern will be routed. A string pattern can be relative to the {@code
+   * baseURL} context option.
+   * @param handler Handler function to route the WebSocket.
+   * @since v1.48
+   */
+  void routeWebSocket(Predicate<String> url, Consumer<WebSocketRoute> handler);
   /**
    * Returns the buffer with the captured screenshot.
    *
@@ -7096,7 +7190,7 @@ public interface Page extends AutoCloseable {
    * <p> <strong>NOTE:</strong> {@link com.microsoft.playwright.Page#setDefaultNavigationTimeout Page.setDefaultNavigationTimeout()} takes priority over
    * {@link com.microsoft.playwright.Page#setDefaultTimeout Page.setDefaultTimeout()}.
    *
-   * @param timeout Maximum time in milliseconds
+   * @param timeout Maximum time in milliseconds. Pass {@code 0} to disable timeout.
    * @since v1.8
    */
   void setDefaultTimeout(double timeout);
@@ -7256,6 +7350,8 @@ public interface Page extends AutoCloseable {
    * page.navigate("https://example.com");
    * }</pre>
    *
+   * @param width Page width in pixels.
+   * @param height Page height in pixels.
    * @since v1.8
    */
   void setViewportSize(int width, int height);

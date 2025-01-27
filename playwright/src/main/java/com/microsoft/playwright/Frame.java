@@ -290,7 +290,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -375,7 +376,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public ClickOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -426,7 +428,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -504,7 +507,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public DblclickOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -1127,7 +1131,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -1191,7 +1196,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public HoverOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -1661,7 +1667,7 @@ public interface Frame {
      */
     public Boolean force;
     /**
-     * @deprecated This option will default to {@code true} in the future.
+     * @deprecated This option has no effect.
      */
     public Boolean noWaitAfter;
     /**
@@ -1686,7 +1692,7 @@ public interface Frame {
       return this;
     }
     /**
-     * @deprecated This option will default to {@code true} in the future.
+     * @deprecated This option has no effect.
      */
     public SelectOptionOptions setNoWaitAfter(boolean noWaitAfter) {
       this.noWaitAfter = noWaitAfter;
@@ -1932,7 +1938,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public Boolean trial;
 
@@ -1996,7 +2003,8 @@ public interface Frame {
     /**
      * When set, this method only performs the <a href="https://playwright.dev/java/docs/actionability">actionability</a>
      * checks and skips the action. Defaults to {@code false}. Useful to wait until the element is ready for the action without
-     * performing it.
+     * performing it. Note that keyboard {@code modifiers} will be pressed regardless of {@code trial} to allow testing
+     * elements which are only visible when those keys are pressed.
      */
     public TapOptions setTrial(boolean trial) {
       this.trial = trial;
@@ -3491,19 +3499,19 @@ public interface Frame {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -3533,19 +3541,19 @@ public interface Frame {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -3573,19 +3581,19 @@ public interface Frame {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
@@ -3615,19 +3623,19 @@ public interface Frame {
    * <p> You can locate by text substring, exact string, or a regular expression:
    * <pre>{@code
    * // Matches <span>
-   * page.getByText("world")
+   * page.getByText("world");
    *
    * // Matches first <div>
-   * page.getByText("Hello world")
+   * page.getByText("Hello world");
    *
    * // Matches second <div>
-   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true))
+   * page.getByText("Hello", new Page.GetByTextOptions().setExact(true));
    *
    * // Matches both <div>s
-   * page.getByText(Pattern.compile("Hello"))
+   * page.getByText(Pattern.compile("Hello"));
    *
    * // Matches second <div>
-   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE))
+   * page.getByText(Pattern.compile("^hello$", Pattern.CASE_INSENSITIVE));
    * }</pre>
    *
    * <p> <strong>Details</strong>
